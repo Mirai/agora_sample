@@ -12,6 +12,7 @@ class AccountsController < ApplicationController
 
 		respond_to do |format|
 			if @account.save
+				Resque.enqueue(VerifyAccount, @account.id)
 				format.html { redirect_to accounts_path, :notice => "Account was successfully created." }
 				format.xml  { render :xml => @account, :status => :created, :location => @account }
 				format.json { render :json => @account, :status => :created, :location => @account }

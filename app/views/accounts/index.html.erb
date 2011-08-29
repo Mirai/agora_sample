@@ -12,6 +12,7 @@
 		<th>Last</th>
 		<th>First</th>
 		<th>Email</th>
+		<th>Verified</th>
 		<th></th>
 		<th></th>
 	</tr>
@@ -21,6 +22,7 @@
 		<td><%= account.last_name %></td>
 		<td><%= account.first_name %></td>
 		<td><%= account.email %></td>
+		<td><%= account.verified ? "Yes" : "No" %></td>
 		<td><%= link_to "Edit", edit_account_path(account) %></td>
 		<td><%= link_to "Delete", account, :confirm => "Are you sure?", :method => :delete %></td>
 	</tr>
