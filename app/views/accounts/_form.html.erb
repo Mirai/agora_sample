@@ -1,0 +1,43 @@
+<%= form_for @account do |f| %>
+	<%= f.error_messages %>
+
+	<div class="field">
+		<%= f.label :first_name %>*<br />
+		<%= f.text_field :first_name %>
+	</div>
+	<div class="field">
+		<%= f.label :last_name %>*<br />
+		<%= f.text_field :last_name %>
+	</div>
+	<div class="field">
+		<%= f.label :address1 %>*<br />
+		<%= f.text_field :address1 %>
+	</div>
+	<div class="field">
+		<%= f.label :address2 %><br />
+		<%= f.text_field :address2 %>
+	</div>
+	<div class="field">
+		<%= f.label :city %>*<br />
+		<%= f.text_field :city %>
+	</div>
+	<div class="field">
+		<%= f.label :state %>*<br />
+		<%= f.select :state, states_collection, :prompt => "Select State" %>
+	</div>
+	<div class="field">
+		<%= f.label :zip %>*<br />
+		<%= f.text_field :zip, :size => 9, :maxlength => 9 %>
+	</div>
+	<div class="field">
+		<%= f.label :phone %><br />
+		<%= f.text_field :phone, :size => 10, :maxlength => 10 %>
+	</div>
+	<div class="field">
+		<%= f.label :email %>*<br />
+		<%= f.text_field :email %>
+	</div>
+	<div class="submit">
+		<%= f.submit %>
+	</div>
+<% end %>

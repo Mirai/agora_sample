@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first_name: Robert
+  last_name: Miner
+  address1: 278 Ali Dr
+  address2: 
+  city: Sycamore
+  state: IL
+  zip: 60178
+  phone: 8157622620
+  email: robertrminer@gmail.com
+
+two:
+  first_name: 
+  last_name: 
+  address1: 
+  address2: 
+  city: 
+  state: 
+  zip: 
+  phone: 
+  email: MyString
