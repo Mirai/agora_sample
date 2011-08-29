@@ -25,8 +25,6 @@ class AccountsControllerTest < ActionController::TestCase
 		should_not set_the_flash
 	end
 
-	should route(:get, "/accounts").to(:controller => :accounts, :action => :index)
-
 	context "post create" do
 	  context "with valid data" do
 	    setup do
