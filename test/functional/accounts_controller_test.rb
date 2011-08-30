@@ -28,11 +28,16 @@ class AccountsControllerTest < ActionController::TestCase
 	context "post create" do
 	  context "with valid data" do
 	    setup do
-	      post :create, :account => accounts(:one)
+	      post :create, :account => accounts(:one).attributes
 	    end
 
 	    should assign_to :account
-	    #should redirect_to accounts_path
+	    
+	    def test_create_redirect
+        post :create, :account => accounts(:one).attributes
+      	assert_redirected_to accounts_path
+      end
+
 	    should set_the_flash.to("Account was successfully created.")
 
 	    should "create the record" do
@@ -72,7 +77,12 @@ class AccountsControllerTest < ActionController::TestCase
 	    end
 
 	    should assign_to(:account){@accout}
-	    #should redirect_to accounts_path
+
+	    def test_update_redirect
+	    	put :update, :id => accounts(:one).id, :account => {:last_name => 'Different'}
+	    	assert_redirected_to accounts_path
+	    end
+
 	    should set_the_flash.to("Account was successfully updated.")
 
 	    should "update the record" do
@@ -94,17 +104,13 @@ class AccountsControllerTest < ActionController::TestCase
 	end
 
 	context "deleting" do
-	  setup do
-	    delete :destroy, :id => accounts(:one).id
-	  end
-
-	  should assign_to(:account){@account}
-	  #should redirect_to accounts_path
-	  should set_the_flash.to("Account successfully deleted.")
-
-	  should "delete the record" do
-	    assert !Account.find(accounts(:one))
-	  end
+  	def test_removes_an_account
+    	assert_difference 'Account.count', -1 do
+      	delete :destroy, :id => accounts(:one).id
+      end
+      assert_redirected_to accounts_path
+      assert_equal flash[:notice], "Account successfully deleted."
+    end
 	end
 
 end

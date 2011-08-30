@@ -53,7 +53,12 @@ class AccountTest < ActiveSupport::TestCase
 	end
 
 	context "phone validation" do
-		should ensure_length_of(:phone).is_at_least(10)
+		def test_should_not_allow_short_phone_numbers
+			a = Account.new(:phone => "xxxxxxxxx")
+			a.save
+
+			assert a.errors[:phone].include? "is too short (minimum is 10 characters)"
+		end
 		should validate_numericality_of :phone
 	end
 

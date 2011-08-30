@@ -12,12 +12,12 @@ one:
   email: robertrminer@gmail.com
 
 two:
-  first_name: 
-  last_name: 
-  address1: 
+  first_name: John
+  last_name: Smith
+  address1: 123 Fake St
   address2: 
-  city: 
-  state: 
-  zip: 
+  city: Fake
+  state: AK
+  zip: 123456789
   phone: 
-  email: MyString
+  email: test@example.com

@@ -1,6 +1,11 @@
 class AccountsController < ApplicationController
 	def index
-		@accounts = params[:search] ? Account.order(:last_name).where("last_name LIKE ? OR first_name LIKE ?", params[:search], params[:search]) : Account.order(:last_name)
+		if params[:search]
+			@accounts = Account.order(:last_name).where("last_name = ? OR first_name = ?", 
+																																			params[:search], params[:search])
+		else
+			@accounts = Account.order(:last_name)
+		end
 	end
 
 	def new

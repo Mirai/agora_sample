@@ -3,24 +3,15 @@ require 'test_helper'
 class CreateAccountTest < ActionController::IntegrationTest
   fixtures :accounts
  
-  context "create account" do
+  def test_account_creation
     get "/accounts/new"
-    should respond_with :success
+    assert_response :success
  
-    post_via_redirect "/accounts", 
-      :first_name => accounts(:one).first_name,
-      :last_name => accounts(:one).last_name,
-      :address1 => accounts(:one).address1,
-      :address2 => accounts(:one).address2,
-      :city => accounts(:one).city,
-      :state => accounts(:one).state,
-      :zip => accounts(:one).zip,
-      :phone => accounts(:one).phone,
-      :email => accounts(:one).email
+    post_via_redirect "/accounts", :account => accounts(:one).attributes
 
     assert_equal '/accounts', path
-    assert_equal 'Account successfully created.', flash[:notice]
+    assert_equal 'Account was successfully created.', flash[:notice]
  
-    should assign_to :accounts
+    assert_not_nil assigns(:accounts)
   end
 end
